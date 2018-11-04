@@ -9,7 +9,7 @@ def call(Map args = [:]) {
     error "Missing manadatory parameter: resources"
   }
 
-  def required = ['ImageStream', 'DeploymentConfig', 'meta']
+  def required = ['ImageStream', 'DeploymentConfig']
   def res = Utils.mergeResources(args.resources)
 
   def found = res.keySet()
@@ -18,9 +18,9 @@ def call(Map args = [:]) {
     error "Missing mandatory build resources params: $missing; found: $found"
   }
 
-  def tag = res.meta.tag
+  def tag = args.meta
   if (!tag) {
-    error "Missing mandatory metadata: tag"
+    error "Missing mandatory metadata: tag ( from meta arg )"
   }
 
 
