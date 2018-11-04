@@ -18,9 +18,9 @@ def call(Map args = [:]) {
     error "Missing mandatory build resources params: $missing; found: $found"
   }
 
-  def tag = args.meta
+  def tag = args.tag
   if (!tag) {
-    error "Missing mandatory metadata: tag ( from meta arg )"
+    error "Missing mandatory metadata: tag"
   }
 
 
