@@ -41,7 +41,7 @@ def specForImage(image, version){
             image: "sbose78/jenkins-agent-golang-1.10-centos7",
             shell: '/bin/bash'
       ],
-      "8.9": [
+      "1.10": [
             image: "sbose78/jenkins-agent-golang-1.10-centos7",
             shell: '/bin/bash'
       ],
