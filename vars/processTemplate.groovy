@@ -22,8 +22,10 @@ def call(args=[:]) {
   // add metadata about the resource that is processed
   // tag is a special metadata and used to tag IS and else where
   if (params.RELEASE_VERSION) {
+    print "found release version"
     resources.meta = [tag: params.RELEASE_VERSION]
   }
+  print resources
   return resources
 }
 
