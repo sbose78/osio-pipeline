@@ -35,8 +35,10 @@ def applyDefaults(provided=[:], templateParams) {
 
   def params = [:]
   def setParam = { key, compute ->
-    if (key in templateParams) {
-      params[key] = provided[key] ?: compute()
+   if (key in templateParams) {
+      params[key] = provided[key] 
+    }else{
+      compute()
     }
   }
 
