@@ -25,6 +25,8 @@ def call(args=[:]) {
     print "found release version"
     resources.meta = [tag: params.RELEASE_VERSION]
   }
+  print params
+  print "----------------"
   print resources
   return resources
 }
