@@ -36,6 +36,9 @@ def applyDefaults(provided=[:], templateParams) {
     if (key in templateParams) {
       params[key] = provided[key] ?: compute()
     }
+    else{
+      params[key] = compute()
+    }
   }
 
   setParam('SUFFIX_NAME') { "-${env.BRANCH_NAME}".toLowerCase() }
