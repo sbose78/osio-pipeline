@@ -75,7 +75,7 @@ def tagImageToDeployEnv(ns, userNamespace, imageStreams, tag) {
         if (!isFound) {
           Utils.ocApply(this, is, userNamespace)
         } else {
-          echo "image stream exist ${isName}"
+          echo "image stream exist ${imageName}"
         }
 
         sh "oc tag -n ${ns} --alias=true ${userNamespace}/${imageName}:${tag} ${imageName}:${tag}"
