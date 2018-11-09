@@ -74,6 +74,7 @@ def tagImageToDeployEnv(ns, userNamespace, imageStreams, tag) {
         def isFound = Utils.shWithOutput(this, "oc get is/$imageName -n $userNamespace --ignore-not-found")
         if (!isFound) {
           Utils.ocApply(this, is, userNamespace)
+          tag = "latest"
         } else {
           echo "image stream exist ${imageName}"
         }
