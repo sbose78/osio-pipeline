@@ -69,8 +69,16 @@ def askForInput(String version, String environment, int duration) {
 def tagImageToDeployEnv(ns, userNamespace, imageStreams, tag) {
   imageStreams.each { is ->
     try {
-      def imageName = is.metadata.name
-      sh "oc tag -n ${ns} --alias=true ${userNamespace}/${imageName}:${tag} ${imageName}:${tag}"
+        def imageName = is.metadata.name
+
+        def isFound = Utils.shWithOutput(this, "oc get is/$imageName -n $userNamespace --ignore-not-found")
+        if (!isFound) {
+          Utils.ocApply(this, is, userNamespace)
+        } else {
+          echo "image stream exist ${isName}"
+        }
+
+        sh "oc tag -n ${ns} --alias=true ${userNamespace}/${imageName}:${tag} ${imageName}:${tag}"
     } catch (err) {
       error "Error running OpenShift command ${err}"
     }
